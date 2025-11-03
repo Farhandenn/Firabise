@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <h1>Data Siswa</h1>
+  <!-- Menampilkan data siswa -->
+  <p id="daftar"></p>
+
+  <script type="module">
+    // impor fungsi atau library atau module dari file main.js
+    import { daftarSiswa } from "./main.js";
+
+    // menampilkan data siswa
+    let dataSiswa = await daftarSiswa();
+    let teks = "";
+
+    // loop data siswa
+    dataSiswa.forEach((siswa) => {
+      teks += 'Nama : ' + siswa.nama + ', Kelas : ' + siswa.kelas + '<br>';
+    });
+
+    document.getElementById("daftar").innerHTML = teks;
+  </script>
+</body>
+</html>

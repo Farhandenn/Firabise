@@ -39,8 +39,7 @@ export async function tambahData () {
             {
                 nama: 'Agus',
                 kelas: 'XI RPL'
-            }
-        )
+            }) 
 
         // menampilkan pesan berhasil
         console.log('Berhasil menambah data siswa')
@@ -48,4 +47,29 @@ export async function tambahData () {
         // menampilkan pesan error
         console.log(error)
     }
+}
+
+// fungsi untuk mengambil data siswa dari firestore
+export async function daftarSiswa () { 
+    const refDokumen = collection(db, "siswa")
+
+//melakukan permintaan atau query ke referensi daftar dokumen
+const kueri = query(refDokumen, orderBy("nama")) 
+
+//menampung data cuplikan kueri
+const cuplikanKueri = await getDocs(kueri)
+
+//tampung hasil kueri
+let hasilkueri = []
+
+//loop cuplikan kueri, simpan ke variabel hasil kueri
+cuplikanKueri.forEach((dokumen) => {
+    hasilkueri.push({
+        nama: dokumen.data().nama, 
+        kelas:dokumen.data().kelas
+   }) 
+})
+
+//kembalikan nilai daftar siswa kepemanggil fungsi
+return hasilkueri
 }
