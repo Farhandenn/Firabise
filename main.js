@@ -75,8 +75,6 @@ return hasilkueri
 }
 //fungis untuk menghapus data siswa berdasarkan id data nya
 export async function hapuSiswa(id){
-    
-
 //hapus data siswa
 await deleteDoc(doc(db, 'siswa', id))
 }

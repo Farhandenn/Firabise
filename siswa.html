@@ -11,11 +11,12 @@
 
     // menampilkan data siswa
     let dataSiswa = await daftarSiswa();
-    let teks = "";
-
+    let teks = ""
+    let nomor= 1
     // loop data siswa
     dataSiswa.forEach((siswa) => {
       teks += 'Nama : ' + siswa.nama + ', Kelas : ' + siswa.kelas + '<br>';
+      nomor++
     });
 
     document.getElementById("daftar").innerHTML = teks;
